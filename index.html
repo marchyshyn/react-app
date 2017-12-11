@@ -17,30 +17,36 @@
     <!--<script  src="react-dom.development.js"></script>-->
 
     <script >
-        // var Component = React.createClass({
-        //     propTypes: {
-        //         version: React.PropTypes.string,
-        //       OS: React.PropTypes.string
-        //     },
-        //     getDefaultProps: function() {
-        //       return {
-        //           version: ' default name',
-        //           OS: ' default OS'
-        //         }
-        //     },
-        //     render: function() {
-        //         return React.DOM.h1(null, 'React component' + this.props.version + this.props.OS);
-        //     }
-        // });
 
         var TextArea = React.createClass({
+           propTypes: {
+               name: React.PropTypes.string
+           },
+           getDefaultProps: function() {
+             return {
+                 name: ''
+               }
+           },
+           getInitialState: function() {
+              return {
+                  name: this.props.name
+              }
+           },
+            _textChange: function(ev) {
+              this.setState({
+                 name: ev.target.value
+              });
+            },
            render: function() {
-               return React.DOM.textarea({htmlValue: this.props.name});
+               return React.DOM.div(null,
+                React.DOM.textarea({value: this.state.name, onChange: this._textChange}),
+                React.DOM.h3(null, this.state.name.length)
+               );
            }
         });
 
         ReactDOM.render(
-            React.createElement(TextArea, {name: 'Bob'}),
+            React.createElement(TextArea, {name: 'Andrii'}),
             document.getElementById('root')
         )
 
