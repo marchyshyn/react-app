@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ReactAPP</title>
+</head>
+<body>
+    <div id="root">
+
+    </div>
+    <div id="root2"></div>
+
+    <script  src="react.js"></script>
+    <script  src="react-dom.js"></script>
+
+    <!--<script  src="react.development.js"></script>-->
+    <!--<script  src="react-dom.development.js"></script>-->
+
+    <script >
+        // var Component = React.createClass({
+        //     propTypes: {
+        //         version: React.PropTypes.string,
+        //       OS: React.PropTypes.string
+        //     },
+        //     getDefaultProps: function() {
+        //       return {
+        //           version: ' default name',
+        //           OS: ' default OS'
+        //         }
+        //     },
+        //     render: function() {
+        //         return React.DOM.h1(null, 'React component' + this.props.version + this.props.OS);
+        //     }
+        // });
+
+        var TextArea = React.createClass({
+           render: function() {
+               return React.DOM.textarea({htmlValue: this.props.name});
+           }
+        });
+
+        ReactDOM.render(
+            React.createElement(TextArea, {name: 'Bob'}),
+            document.getElementById('root')
+        )
+
+
+    </script>
+</body>
+</html>
