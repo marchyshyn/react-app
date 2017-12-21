@@ -15,7 +15,6 @@
 
     <!--<script  src="react.development.js"></script>-->
     <!--<script  src="react-dom.development.js"></script>-->
-    <asd></asd>
 
     <script >
 
@@ -33,6 +32,27 @@
                   name: this.props.name
               }
            },
+            _log: function(methodName, args) {
+                console.log(methodName, args);
+            },
+            componentWillUpdate: function() {
+                this._log('componentWillUpdate', arguments);
+            },
+            componentDidUpdate: function() {
+               if(this.state.name.length > 7){
+                   this.replaceState({name: this.props.name});
+               }
+                this._log('componentDidUpdate', arguments);
+            },
+            componentWillMount: function() {
+                this._log('componentWillMount', arguments);
+            },
+            componentDidMount: function() {
+                this._log('componentDidMount', arguments);
+            },
+            componentWillUnmount: function() {
+                this._log('componentWillUnmount', arguments);
+            },
             _textChange: function(ev) {
               this.setState({
                  name: ev.target.value
